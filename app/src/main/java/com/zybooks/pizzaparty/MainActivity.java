@@ -1,8 +1,11 @@
 package com.zybooks.pizzaparty;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
@@ -25,8 +28,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void calculateClick(View view) {
         String numAttendStr = mNumAttendEditText.getText().toString(); //store value from mNumAttendEditText to a string in numAttendStr
-        int numAttend = Integer.parseInt(numAttendStr); //convert the string to an integer
+        Log.d(TAG, "number is " + numAttendStr);
 
+        //if NumberFormatException not accounted for, the unhandled exception will crash the program.
+        int numAttend;
+        try {
+            numAttend = Integer.parseInt(numAttendStr); //convert the string to an integer
+        } catch (NumberFormatException er) {
+            numAttend = 0;
+        }
+        
         int slicesPerPerson = 0;
         int checkId = mHowHungryRadioGroup.getCheckedRadioButtonId();
 
