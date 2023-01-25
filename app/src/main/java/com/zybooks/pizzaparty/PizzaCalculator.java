@@ -1,6 +1,6 @@
 package com.zybooks.pizzaparty;
 
-//CONTROL COMPONENT
+//MODEL COMPONENT
 public class PizzaCalculator {
     public enum HungerLevel {
         LIGHT, MEDIUM, RAVENOUS
